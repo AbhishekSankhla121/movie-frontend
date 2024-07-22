@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
+import Header from "./component/Header";
+import CreateMovies from "./component/Create";
+import Update from "./component/Update";
+import Homeee from "./component/Home";
+import DefaultPageUser from "./component/Defa";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <Toaster />
+      <Routes>
+        <Route path="/" element={<Homeee />} />
+        <Route path="/create" element={<CreateMovies />} />
+        <Route path="/update/:id" element={<Update />} />
+        <Route path="/default" element={<DefaultPageUser />} />
+      </Routes>
+    </Router>
   );
 }
 
